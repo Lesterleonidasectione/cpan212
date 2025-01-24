@@ -1,27 +1,37 @@
-const http = require("http");
-const fs = require("fs");
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
+const hostname = 'localhost';
+const port = 8000; // Changed port to 8000
 
-const app = http.createServer((req, res)=>{
-    if(req.url === "/") {
-        res.end(`Welcome to the server`)
-}
-else if(req.url === "/about"){
-    const webpage = fs.readFileSync("about.html");
-    res.end(webpage);
-}
-else if(req.url === "/login"){
-    const webpage = fs.readFileSync("login.html");
-    res.end(webpage);
-}
+const server = http.createServer((req, res) => {
+  const url = req.url;
+  const method = req.method;
 
-else {
-    console.log(`Page not Found`);
-}
-})
+  const serveFile = (filePath, contentType) => {
+    fs.readFile(filePath, (err, content) => {
+      if (err) {
+        res.writeHead(500);
+        res.end('Error reading file');
+      } else {
+        res.writeHead(200, { 'Content-Type': contentType });
+        res.end(content);
+      }
+    });
+  };
 
-let PORT = 8000;
-app.listen(PORT, ()=>{
-    console.log(`http://localhost:${PORT}`)
-})
-    
+  if (url === '/' && method === 'GET') {
+    serveFile(path.join(__dirname, 'pages', 'index.html'), 'text/html');
+  } else if (url === '/books' && method === 'GET') {
+    serveFile(path.join(__dirname, 'pages', 'books.html'), 'text/html');
+  } else if (url === '/contact' && method === 'GET') {
+    serveFile(path.join(__dirname, 'pages', 'contact.html'), 'text/html');
+  } else { // Catch-all for 404
+      serveFile(path.join(__dirname, 'pages', '404.html'), 'text/html');
+  }
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});

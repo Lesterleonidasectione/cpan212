@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Books</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4; /* Light gray background */
+        }
+        h1 {
+            text-align: center;
+            color: #333; /* Dark gray heading */
+        }
+        .book-container {
+            display: flex; /* Use flexbox for layout */
+            flex-wrap: wrap; /* Allow wrapping to new lines */
+            justify-content: center; /* Center the books */
+            gap: 20px; /* Spacing between books */
+        }
+        .book {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+            background-color: white; /* White book background */
+            width: 300px; /* Set a fixed width for books */
+            transition: transform 0.2s; /* Add a transition for hover effect */
+        }
+        .book:hover {
+            transform: translateY(-5px); /* Move up slightly on hover */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+
+        }
+        .book img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Prevents extra space below image */
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .book h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .book p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Collection of Books</h1>
+
+    <div class="book-container">
+        <div class="book">
+            <img src="https://via.placeholder.com/200x300" alt="The Hitchhiker's Guide to the Galaxy">
+            <h2>The Hitchhiker's Guide to the Galaxy</h2>
+            <p>By Douglas Adams</p>
+            <p>A comedic science fiction series.</p>
+        </div>
+
+        <div class="book">
+            <img src="https://via.placeholder.com/200x300" alt="To Kill a Mockingbird">
+            <h2>To Kill a Mockingbird</h2>
+            <p>By Harper Lee</p>
+            <p>A classic novel about racial injustice.</p>
+        </div>
+
+        <div class="book">
+            <img src="https://via.placeholder.com/200x300" alt="1984">
+            <h2>1984</h2>
+            <p>By George Orwell</p>
+            <p>A dystopian novel about totalitarianism.</p>
+        </div>
+        <div class="book">
+            <img src="https://via.placeholder.com/200x300" alt="Pride and Prejudice">
+            <h2>Pride and Prejudice</h2>
+            <p>By Jane Austen</p>
+            <p>A romantic novel about love and society.</p>
+        </div>
+    </div>
+
+</body>
+</html>
